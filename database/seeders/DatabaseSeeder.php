@@ -13,7 +13,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
+        $this->call(RegionSeeder::class);
         #callseederhere
+        
 
         // \App\Models\User::factory(10)->create();
 

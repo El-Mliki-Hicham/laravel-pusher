@@ -7,7 +7,14 @@
             </a>
 
         </li>
-          <!--sidebareHere-->
+          
+        <li class=''><a class='' href='{{route('region.index')}}' aria-expanded='false'>
+        <i class='fas fa-home'></i>
+        <span class='nav-text'>{{ strtolower(__('sidebar.region')) }}</span>
+    </a>
+</li>
+        
+<!--sidebareHere-->
            
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                 <i class="fas fa-info-circle"></i>

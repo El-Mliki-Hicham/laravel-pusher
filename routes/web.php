@@ -30,3 +30,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+// Region Routes
+        Route::resource('region','App\Http\Controllers\RegionController');

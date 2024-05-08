@@ -1,5 +1,6 @@
 <?php
 
 return [
-    #addHere
+    "region" => "region",
+#addHere
 ];
