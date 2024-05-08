@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Events\RegionEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Region;
 use Illuminate\Http\Request;
 use Monolog\Formatter\GoogleCloudLoggingFormatter;
 use App\Http\Requests\RegionRequest;
 
-class RegionController extends Controller
+class RegionApiController extends  Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,16 +31,18 @@ class RegionController extends Controller
      */
     public function store(RegionRequest $request)
     {
-        $region = New Region;
-        $region->label=$request->label;
+        $region = new Region;
+        $region->label = $request->label;
 
         $region->save();
         // ucfirst(__("models/salon.salon"))." ".__("has been added")
-        return response()->json([
-            'status' => true,
-            'Region' => $region,
-            "msg"=>"has been added"
-        ]);
+        event(new RegionEvent($region));
+
+        // return response()->json([
+        //     'status' => true,
+        //     'Region' => $region,
+        //     "msg" => "has been added"
+        // ]);
     }
 
     /**
@@ -53,7 +56,7 @@ class RegionController extends Controller
             'Region' => $region
         ]);
     }
-   
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -63,7 +66,7 @@ class RegionController extends Controller
         return response()->json([
             'status' => true,
             'Region' => $region,
-            "msg"=>"has been added"
+            "msg" => "has been added"
         ]);
     }
 
@@ -73,13 +76,13 @@ class RegionController extends Controller
     public function update(RegionRequest $request, string $id)
     {
         $region = Region::find($id);
-        $region->label=$request->label;
+        $region->label = $request->label;
 
         $region->save();
         return response()->json([
             'status' => true,
             'Region' => $region,
-            "msg"=>"has been update"
+            "msg" => "has been update"
         ]);
     }
 
@@ -92,7 +95,7 @@ class RegionController extends Controller
         return response()->json([
             'status' => true,
 
-            "msg"=>"has been deleted"
+            "msg" => "has been deleted"
         ]);
     }
 }

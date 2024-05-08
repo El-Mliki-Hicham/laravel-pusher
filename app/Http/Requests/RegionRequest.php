@@ -22,8 +22,8 @@ class RegionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "label" =>"string|nullable|requierd",
-            
+            "label" => "string|nullable|required",
+
         ];
     }
     public function message(): array

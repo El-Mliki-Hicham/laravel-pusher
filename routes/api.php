@@ -18,4 +18,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 // Region Routes
-        Route::resource('region','App\Http\Controllers\RegionController');
+Route::resource('region', 'App\Http\Controllers\API\RegionApiController');

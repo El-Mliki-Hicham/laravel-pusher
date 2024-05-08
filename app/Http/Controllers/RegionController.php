@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RegionEvent;
 use App\Models\Region;
 
 use Illuminate\Http\Request;
@@ -37,6 +38,8 @@ class RegionController extends Controller
         $region->label = $request->label;
 
         $region->save();
+        event(new RegionEvent($region));
+
         // ucfirst(__("models/salon.salon"))." ".__("has been added")
         return redirect("/region")->with("msg", ucfirst(__("models/region.region")) . " " . __("has been added"));
     }
